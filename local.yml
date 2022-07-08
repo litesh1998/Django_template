@@ -1,0 +1,26 @@
+version: "3.8"
+
+services: 
+    app:
+        build: 
+            context: ./
+            dockerfile: ./DOCKER/Django/Dockerfile
+        command: python manage.py runserver 0.0.0.0:8000
+        ports: ["8000:8000"]
+        image: app:django
+        volumes:
+            - .:/app
+        container_name: django_backend
+        env_file:
+            - ./.env/local/postgres.env
+            - ./.env/local/django.env
+        depends_on: 
+            - db
+
+    db:
+        image: postgres
+        volumes: 
+            - ./data/db:/var/lib/postgresql/data
+        env_file:
+            - ./.env/local/postgres.env
+        container_name: postgres_db

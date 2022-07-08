@@ -1,0 +1,10 @@
+data
+data/*
+DOCKER
+DOCKER/*
+.env
+.env/*
+.github/*
+.github
+.venv
+.venv/
