@@ -4,11 +4,11 @@ LABEL AUTHOR="Litesh Garg" version='1.0'
 ENV PYTHONNUMBUFFERED 1
 
 
-COPY ./requirements.txt /requirements.txt
+COPY ./requirements /requirements
 RUN apk add --update --no-cache postgresql-client jpeg-dev
 RUN apk add --update --no-cache --virtual .temp-build-deps \
     gcc libc-dev linux-headers postgresql-dev musl-dev zlib zlib-dev
-RUN pip install -r /requirements.txt
+RUN pip install -r /requirements/local.txt
 RUN apk del .temp-build-deps
 
 RUN mkdir /app

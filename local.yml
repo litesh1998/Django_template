@@ -10,7 +10,7 @@ services:
         image: app:django
         volumes:
             - .:/app
-        container_name: django_backend
+
         env_file:
             - ./.env/local/postgres.env
             - ./.env/local/django.env
@@ -23,4 +23,4 @@ services:
             - ./data/db:/var/lib/postgresql/data
         env_file:
             - ./.env/local/postgres.env
-        container_name: postgres_db
+        
